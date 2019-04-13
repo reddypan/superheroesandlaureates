@@ -26,8 +26,8 @@ struct Members: Codable {
 
 
 struct Laureates {
-    var firstname : String
-    var surname: String
-    var born: String
-    var died: String
+    var firstname : String?
+    var surname: String?
+    var born: String?
+    var died: String?
 }

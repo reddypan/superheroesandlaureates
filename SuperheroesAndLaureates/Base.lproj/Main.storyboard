@@ -93,12 +93,34 @@
                                     <constraint firstAttribute="width" secondItem="phd-OT-s1b" secondAttribute="height" multiplier="343:584" id="e5i-SF-OcS"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="laureatesCell" id="NYZ-CI-5fq">
-                                        <rect key="frame" x="0.0" y="28" width="343" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="laureatesCell" rowHeight="50" id="NYZ-CI-5fq">
+                                        <rect key="frame" x="0.0" y="28" width="343" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="NYZ-CI-5fq" id="eOJ-T7-Y8f">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="49.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="200" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cfh-LG-xfb">
+                                                    <rect key="frame" x="15" y="29" width="328" height="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="100" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xf8-LZ-5EQ">
+                                                    <rect key="frame" x="15" y="6" width="328" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="xf8-LZ-5EQ" firstAttribute="leading" secondItem="eOJ-T7-Y8f" secondAttribute="leadingMargin" id="Bcp-dl-bjh"/>
+                                                <constraint firstAttribute="trailing" secondItem="xf8-LZ-5EQ" secondAttribute="trailing" id="Ijl-lO-2xx"/>
+                                                <constraint firstItem="xf8-LZ-5EQ" firstAttribute="top" secondItem="eOJ-T7-Y8f" secondAttribute="top" constant="6" id="ckV-Ml-NMQ"/>
+                                                <constraint firstItem="Cfh-LG-xfb" firstAttribute="top" secondItem="xf8-LZ-5EQ" secondAttribute="bottom" constant="2" id="csZ-b6-6RZ"/>
+                                                <constraint firstItem="xf8-LZ-5EQ" firstAttribute="leading" secondItem="Cfh-LG-xfb" secondAttribute="leading" id="jPN-cC-HWC"/>
+                                                <constraint firstItem="xf8-LZ-5EQ" firstAttribute="trailing" secondItem="Cfh-LG-xfb" secondAttribute="trailing" id="szd-9X-eqB"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>

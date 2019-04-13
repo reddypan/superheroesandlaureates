@@ -13,14 +13,13 @@ class LaureatesViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchLaureates()
-        // Do any additional setup after loading the view, typically from a nib.
     }
     
     @IBOutlet weak var laureatesTableView: UITableView!
-    var laureatesURL = "https://www.dropbox.com/s/7dhdrygnd4khgj2/squad.json?dl=1"
+    var laureatesURL = "https://www.dropbox.com/s/7dhdrygnd4khgj2/laureates.json?dl=1"
     
 
-    var laureatesArray: [Laureates] = [Laureates(firstname: "Hello", surname: "Hello", born: "Hello", died: "Hello")]
+    var laureatesArray: [Laureates] = []
     func fetchLaureates(){
         let urlSession = URLSession.shared
         let url = URL(string: laureatesURL)
@@ -29,26 +28,26 @@ class LaureatesViewController: UIViewController, UITableViewDataSource, UITableV
 
     func displayLaureates(data:Data?, urlResponse:URLResponse?, error:Error?)->Void {
         var laureates:[[String:Any]]!
-        var firstName: String
-        var surname: String
-        var born: String
-        var died: String
+        var firstName: String?
+        var surname: String?
+        var born: String?
+        var died: String?
         do {
             try laureates = JSONSerialization.jsonObject(with: data!, options: .allowFragments)  as?  [[String:Any]]
             for i in 0..<laureates!.count {
-                if i != 461 && i != 470 && i != 475 {
-                try firstName = (laureates![i]["firstname"] as? String)!
-                try surname = (laureates![i]["surname"] as? String)!
-                try born = (laureates![i]["born"] as? String)!
-                try died = (laureates![i]["died"] as? String)!
+                firstName = ((laureates![i]["firstname"] as? String))
+                surname = ((laureates![i]["surname"] as? String))
+                born = (laureates![i]["born"] as? String)
+                died = (laureates![i]["died"] as? String)
                 self.laureatesArray.append(Laureates(firstname: firstName, surname: surname, born: born, died: died))
             }
+            DispatchQueue.main.async {
+                self.laureatesTableView.reloadData()
             }
         } catch {
             print(error)
         }
     }
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return laureatesArray.count
@@ -61,9 +60,23 @@ class LaureatesViewController: UIViewController, UITableViewDataSource, UITableV
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "laureatesCell", for: indexPath)
         let laureate = laureatesArray[indexPath.row]
-        cell.textLabel?.text = laureate.firstname
+        let titleLBL = cell.viewWithTag(100) as! UILabel
+        let birthyearLBL = cell.viewWithTag(200) as! UILabel
+        titleLBL.text = "\(laureate.firstname!) \(laureate.surname!)"
+        birthyearLBL.text = "\(laureate.born!) - \(laureate.died!)"
         return cell
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "LAUREATES"
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
+    }
+    
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 50
+    }
 }
 
