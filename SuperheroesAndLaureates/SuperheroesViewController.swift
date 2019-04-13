@@ -1,5 +1,5 @@
 //
-//  FirstViewController.swift
+//  SuperheroesViewController.swift
 //  SuperheroesAndLaureates
 //
 //  Created by Pannala,Vishal Reddy on 4/12/19.
@@ -8,16 +8,16 @@
 
 import UIKit
 
-class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-    
-    let superHeroesURL: String = "https://www.dropbox.com/s/wpz5yu54yko6e9j/squad.json?dl=1"
+class SuperheroesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    let superHeroesURL: String = "https://www.dropbox.com/s/wpz5yu54yko6e9j/squad.json?dl=1"
+    
     @IBOutlet weak var superheroesTableView: UITableView!
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchSuperheroes()
     }
-
+    
     var members: [Members] = []
     
     func fetchSuperheroes(){
@@ -79,6 +79,16 @@ class FirstViewController: UIViewController, UITableViewDelegate, UITableViewDat
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 200
     }
+    
+
+    /*
+    // MARK: - Navigation
+
+    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        // Get the new view controller using segue.destination.
+        // Pass the selected object to the new view controller.
+    }
+    */
 
 }
-
